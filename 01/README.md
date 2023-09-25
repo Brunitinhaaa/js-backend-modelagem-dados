@@ -1,22 +1,36 @@
-![](https://i.imgur.com/xG74tOh.png)
-
 # Exercício 01
 
 ## Modelando e criando Banco de dados
 
-Uma empresa no seguimento de supermercados solicitou um sistema para vendas online. A empresa terá um supermecado virtual e precisa estruturar um banco de dados para integrar ao sistema que já está sendo desenvolvido. Os responsáveis pelo projeto já modelou o banco de dados e solicitou que os desenvolvedores implementassem.
+# Sistema de Vendas Online para Supermercado
 
-De acordo com a modelagem de dados disponibilizada no arquivo `modelagem.png`, faça a criação do banco de dados `ecommerce` e suas tabelas com todos os relacionamentos apresentados.
+Este repositório contém a documentação para o sistema de vendas online desenvolvido para um supermercado. O projeto inclui a criação do banco de dados, a inserção de dados e a realização de vendas.
 
-obs.:
+## Descrição
 
-a) O campo cpf da tabela `clientes` e da tabela `vendedores` não pode aceitar registros duplicados.
+O projeto se refere a um sistema de vendas online desenvolvido para um supermercado. O objetivo principal é permitir que os clientes façam compras pela internet, escolhendo produtos a partir de uma variedade de categorias. O sistema também gerencia as vendas realizadas por vendedores.
 
-b) Os identificadores em negrito significa que são chaves primárias.
+### Funcionalidades Principais
 
-Após a criação do banco de dados e suas tabelas, vamos precisar uma série de operações conforme descritas abaixo:
+1. **Banco de Dados**: O projeto começa com a criação de um banco de dados chamado `ecommerce`, que é responsável por armazenar todas as informações necessárias para o funcionamento do sistema.
 
-1 - Alimentar a tabela `categorias` com as seguintes informações.
+2. **Modelagem de Dados**: O banco de dados foi modelado de acordo com as necessidades do supermercado. As principais tabelas incluem:
+   - `categorias`: Para armazenar categorias de produtos.
+   - `produtos`: Para armazenar informações detalhadas sobre os produtos, incluindo nome, descrição, preço e quantidade em estoque.
+   - `clientes`: Para registrar informações sobre os clientes, como CPF e nome.
+   - `vendedores`: Para registrar informações sobre os vendedores, também com CPF e nome.
+
+3. **Inserção de Dados**: Foram inseridos dados nas tabelas do banco de dados para simular um ambiente real. Isso incluiu adicionar categorias de produtos, informações sobre produtos específicos, dados de clientes e vendedores.
+
+4. **Vendas**: O sistema permite a realização de vendas. As vendas incluem informações sobre os produtos vendidos, os clientes que fizeram as compras e os vendedores responsáveis pelas vendas.
+
+5. **Atualização de Estoque**: Após cada venda, o sistema faz uma atualização automática do estoque de produtos, garantindo que a quantidade em estoque seja atualizada corretamente.
+
+6. **Relatórios**: Embora não mencionado diretamente nas instruções, é possível que o sistema gere relatórios de vendas, lucros, estoque, entre outros, para ajudar na gestão do supermercado.
+
+7. **Script SQL**: Todos os comandos SQL utilizados para criar o banco de dados, inserir dados e realizar vendas estão disponíveis no arquivo `query.sql`. Esse arquivo é uma representação do script SQL usado para configurar o banco de dados e realizar as operações necessárias.
+
+tabela `categorias` 
 
 | nome       |
 | ---------- |
@@ -26,7 +40,7 @@ Após a criação do banco de dados e suas tabelas, vamos precisar uma série de
 | bebidas    |
 | utilidades |
 
-2 - Alimentar a tabela `produtos` com as seguintes informações:
+tabela `produtos`
 
 | nome                        | descricao                                                                                                    | preco | quantidade_em_estoque | categoria_id              |
 | --------------------------- | ------------------------------------------------------------------------------------------------------------ | ----- | --------------------- | ------------------------- |
@@ -51,7 +65,7 @@ Após a criação do banco de dados e suas tabelas, vamos precisar uma série de
 
 Obs.: informe o `id` da `categoria_id` referente a cada produto. Ex.: frutas `categoria_id = 1`.
 
-3 - Alimentar a tabela `clientes` com as seguintes informações
+tabela `clientes`
 
 | cpf            | nome               |
 | -------------- | ------------------ |
@@ -60,51 +74,12 @@ Obs.: informe o `id` da `categoria_id` referente a cada produto. Ex.: frutas `ca
 | 631.933.100-34 | Ana Rodrigues      |
 | 756.705.050-18 | Maria da Conceição |
 
-4 - Alimentar a tabela `vendedores` com as seguintes informações
+tabela `vendedores`
 
 | cpf            | nome                 |
 | -------------- | -------------------- |
 | 825.398.410-31 | Rodrigo Sampaio      |
 | 232.625.460-03 | Beatriz Souza Santos |
 | 280.071.550-23 | Carlos Eduardo       |
-
-5 - Agora que o banco de dados está alimentado, vamos realizar algumas vendas. Sendo assim, segue um relatórios para que as vendas sejam lançadas.
-
-Obs.: Sempre que lançar uma venda, será necessário abater as quantidades no estoque dos produtos vendidos antes de uma nova venda.
-
-a) José Algusto comprou os seguintes itens com o vendedor Carlos Eduardo:
-
-- 1 Mamão, 1 Pepsi de 2l, 6 Heinekens de 600ml, 1 Escova dental e 5 Maçãs.
-
-b) Ana Rodrigues comprou os seguintes itens com a vendedora Beatriz Souza Santos
-
-- 10 Mangas, 3 Uvas, 5 Mamões, 10 tomates e 2 Acelgas.
-
-c) Maria da Conceição comprou os seguintes itens com a vendedora Beatriz Souza Santos
-
-- 1 Vassoura, 6 Águas sem gás e 5 Mangas.
-
-d) Maria da Conceição comprou os seguintes itens com o vendedor Rodrigo Sampaio
-
-- 1 Balde para lixo, 6 Uvas, 1 Macarrão parafuso, 3 Mamões, 20 tomates e 2 Acelgas.
-
-e) Antonio Oliveira comprou os seguintes itens com o vendedor Rodrigo Sampaio
-
-- 8 Uvas, 1 Massa para lasanha, 3 Mangas, 8 tomates e 2 Heinekens 600ml.
-
-Todo script construido deverá ser disponibilizado no arquivo `query.sql` do diretório atual.
-
-Faça o teste com outros exemplos.
-
-Faça commit do resultado.
-
----
-
-Preencha a checklist para finalizar o exercício:
-
-- [ ] Resolver o exercício revendo a aula se necessário
-- [ ] Adicionar as mudanças aos commits (`git add .` para adicionar todos os arquivos, ou `git add nome_do_arquivo` para adicionar um arquivo específico)
-- [ ] Commitar a cada mudança significativa ou na finalização do exercício (`git commit -m "Mensagem do commit"`)
-- [ ] Pushar os commits no seu fork na origem (`git push origin nome-da-branch`)
 
 ###### tags: `exercícios` `banco de dados` `sql` `postgres`
